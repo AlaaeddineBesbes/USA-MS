@@ -1,0 +1,132 @@
+/* COMMON TO ALL CHARTS */
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+div.charts {
+    float: left;
+}
+
+div.sub_charts {
+    float: left;
+}
+
+
+/* MAP CHART */
+div.map_chart {
+    
+}
+
+div.sub_map {
+    width: 5%;
+}
+
+div.infos {
+    border: solid 1px;
+}
+
+svg#legend {
+    padding-left: 2%;
+}
+
+
+/* DONUT CHART */
+div.donut_chart {
+
+}
+
+
+/* GENERAL */
+h1 {
+    font-family: sans-serif; 
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+/* On mouse hover, lighten state color */
+path:hover {
+	fill-opacity: .7;
+}
+
+/* Style for Custom Tooltip */
+div.tooltip {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 400px;                  
+	height: auto;     
+	padding: 1%;                              
+	background: white;   
+	border: solid 1px lightgrey;   
+	border-radius: 8px;           
+	pointer-events: none;         
+}
+
+div#victims {
+	font: 22px sans-serif; 
+	line-height: 30px;
+}
+
+div#context {
+	font: 16px sans-serif;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 3%;
+}
+
+div#description {
+	font: 14px sans-serif;
+	line-height: 20px;
+	text-align: justify;
+}
+              
+/* Legend Position Style */
+.legend {
+	font: 11px sans-serif;
+	/* position:; */
+	padding: 0;
+}
+path.slice {
+    stroke-width:2px;
+}
+
+polyline {
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
+/* Style for Custom Tooltip */
+div.donutTooltip {   
+    position: absolute;           
+    text-align: center;           
+    width: auto;                  
+    height: auto;     
+	padding: 1%;                              
+	background: white;   
+	border: solid 1px lightgrey;             
+    font: 12px sans-serif;          
+    border-radius: 8px;           
+    pointer-events: none;         
+}
