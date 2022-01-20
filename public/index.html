@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<link rel="stylesheet" href="css/main_style.css" />
+		<link rel="stylesheet" href="css/map_style.css" />
+		<link rel="stylesheet" href="css/donut_style.css" />
+	</head>
+
+	<body>
+		<div class="charts">
+			
+			<div class="map_chart" >
+				<h1>Distribution of mass shooting all accros the USA map : </h1>
+				<h3 style="color: red;">(put cursor on the red dots ;)  )</h3>
+				<svg id="legend"></svg> 
+				<svg id="map"></svg>
+				
+			</div>
+
+			<div class="sub_charts" >
+				<h3>Percentage of Mass Shooting per place (chose a State to show it) : </h3>
+				<svg id="targetPlaces"></svg>
+			</div>		
+		</div>
+
+		<div class="charts">
+			<h1>Percentage of Mass Shooting per place (All over Usa) :</h1>
+			<div class="donut_chart">
+				<svg id="donut"></svg>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/charts/donut/Donut.js"></script>
+		<script type="text/javascript" src="js/charts/map/vis_map.js"></script>
+		<script type="text/javascript" src="js/charts/donut/vis_donut.js"></script>
+		<!-- <script type="text/javascript" src="js/charts/bar/vis_bar.js"></script> -->
+	</body>
+
+</html>

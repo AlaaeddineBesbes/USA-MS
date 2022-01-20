@@ -1,0 +1,24 @@
+path.slice {
+    stroke-width:2px;
+}
+
+polyline {
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
+/* Style for Custom Tooltip */
+div.donutTooltip {   
+    position: absolute;           
+    text-align: center;           
+    width: auto;                  
+    height: auto;     
+	padding: 1%;                              
+	background: white;   
+	border: solid 1px lightgrey;             
+    font: 12px sans-serif;          
+    border-radius: 8px;           
+    pointer-events: none;         
+}
