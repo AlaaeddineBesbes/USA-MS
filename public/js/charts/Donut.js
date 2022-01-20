@@ -238,6 +238,23 @@ class Donut {
 		return localCat;
 	}
 
+	reCategorizeRace(categories, data) {
+
+		let local = JSON.parse(JSON.stringify(data));
+		let localCat = JSON.parse(JSON.stringify(categories));
+		local.forEach(function (d) {
+			let race = d.Shooter_Race;
+			console.log(local);
+			localCat.forEach(function (c) {
+				if (c['sub'].includes(race)) {
+					c['count'] += 1;
+				}
+			});
+		});
+		
+		return localCat;
+	}
+
 
 	/**
 	 * Count occurences in data
@@ -264,6 +281,36 @@ class Donut {
 	 * @param {*} scheme 
 	 * @param {*} data 
 	 */
+
+	 generateRaceDonut(scheme, categories, data, doReduce = false) {
+
+		// DONUT DATA
+		let donutData = null;
+		if (doReduce) {
+			donutData = this.reCategorizeRace(categories, data).sort(function (a, b) {
+				return a.count - b.count;
+			});
+		} else {
+			donutData = this.countOccurences(categories, data).sort(function (a, b) {
+				return a.count - b.count;
+			});
+		}
+		console.log(donutData);
+
+		// FORMAT CHART ELEMENTS
+		donutData = this.format(donutData, scheme);
+
+		// LABELS
+		let domain = this.getLabels(categories);
+
+		// COLOR SCHEME
+		let colors = d3.scale.ordinal()
+			.domain(domain)
+			.range(scheme);
+
+		this.change(colors, donutData);
+	}
+
 	generateDonut(scheme, categories, data, doReduce = false) {
 
 		// DONUT DATA
@@ -277,6 +324,7 @@ class Donut {
 				return a.count - b.count;
 			});
 		}
+		
 
 		// FORMAT CHART ELEMENTS
 		donutData = this.format(donutData, scheme);
@@ -308,6 +356,13 @@ let categories = [
 	{ label: "Work place", sub: ["Company/Factory/Office"], count: 0 }
 ];
 
+let raceCategories = [
+    { label: "Black", sub: ["Black American or African American"], count: 0 },
+	{ label: "White", sub: ["White American or European American"], count: 0 },
+	{ label: "Asian", sub: ["Asian American"], count: 0 },
+	{ label: "Other", sub: ["Unknown","Some other race"], count: 0 },
+];
+
 
 
 
@@ -316,4 +371,7 @@ d3.dsv(';')("datasets/mass-shootings-in-america.csv", function(data) {
 
 	let donut = new Donut(dWidth, dHeight, "#donut", "donutTooltip");
 	donut.generateDonut(colors, categories, data, true);
+
+	let raceDonut = new Donut(dWidth, dHeight, "#raceDonut", "donutTooltip");
+	raceDonut.generateRaceDonut(colors,raceCategories, data, true);
 });

@@ -8,6 +8,7 @@ let dMapWidth = 610;
 let dMapHeight = 200;
 let dColors = ["#40E0D0", "#6495ED", "#DE3163", "#1F618D ", "#5B2C6F"];
 let mapDonut = new Donut(dMapWidth, dMapHeight, "#targetPlaces", "mDonutTooltip");
+let mapRaceDonut=new Donut(dMapWidth, dMapHeight, "#targetRaces", "mDonutTooltip");
 
 let dMapCategories = [
 	{ label: "Home and neighborhood", sub: ["Residential home/Neighborhood, Retail/Wholesale/Services facility", "Residential home/Neighborhood"], count: 0 },
@@ -16,6 +17,13 @@ let dMapCategories = [
 	{ label: "Government/military facilities", sub: ["Government facility", "Military facility"], count: 0 },
 	{ label: "Work place", sub: ["Company/Factory/Office"], count: 0 }
 ];
+
+let dMapRaceCategories = [
+		{ label: "Black", sub: ["Black American or African American"], count: 0 },
+		{ label: "White", sub: ["White American or European American"], count: 0 },
+		{ label: "Asian", sub: ["Asian American"], count: 0 },
+		{ label: "Other", sub: ["Unknown","Some other race"], count: 0 },
+	];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("#map")
@@ -150,6 +158,8 @@ d3.dsv(';')("datasets/mass-shootings-in-america.csv", function (data) {
 				// GENERATE A NEW DONUT
 				let stateData = getStateData(d.properties.name, data);
 				mapDonut.generateDonut(dColors, dMapCategories, stateData, true);
+				mapRaceDonut.generateRaceDonut(dColors, dMapRaceCategories, stateData, true);
+
 			})
 
 			// ON DOUBLE CLICK
